@@ -1,4 +1,5 @@
 using namespace std;
+
 enum MealType{NO_PREF, REGULAR, LOW_FAT, VEGETARIAN};
 
 class Passanger {

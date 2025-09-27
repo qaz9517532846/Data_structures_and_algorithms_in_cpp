@@ -1,7 +1,22 @@
-CC=g++-11
-test: test.cpp
-	$(CC) test.cpp -o test
-	./test
+# 定義編譯器
+CXX = g++
 
-testcard: TestCard.cpp CreditCard.cpp
-	$(CC) Testcard.cpp CreditCard.cpp -o card
+# 編譯選項
+CXXFLAGS = -Wall -std=c++11
+
+# 定義源文件和目標檔案
+SRC = CreditCard.cpp TestCard.cpp
+OBJ = $(SRC:.cpp=.o)
+TARGET = test
+
+# 編譯規則
+$(TARGET): $(OBJ)
+	$(CXX) $(OBJ) -o $(TARGET)
+
+# 將 .cpp 轉換為 .o
+%.o: %.cpp
+	$(CXX) -c $(CXXFLAGS) $< -o $@
+
+# 清理生成的檔案
+clean:
+	rm -f $(OBJ) $(TARGET)
