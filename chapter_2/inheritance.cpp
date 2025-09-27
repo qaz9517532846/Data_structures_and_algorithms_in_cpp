@@ -1,55 +1,134 @@
 #include <iostream>
 
 using namespace std;
-class Person {
-    private:
-        int ID;
-        string name;
+
+class Progression {
     public:
-        Person(int id, string name0);
-        int getID() const {return ID;}
-        string getname() const {
-            return name;
-        }
+        Progression(long f = 0) : first(f), cur(f) {}
+        virtual ~Progression() {};
+        void printProgression(int n);
+    protected:
+        virtual long firstValue();
+        virtual long nextValue();
+    protected:
+        long first;
+        long cur;
 };
 
-Person::Person(int id, string name0) :
-    ID(id),
-    name(name0) {}
-
-
-class Student : public Person {
-    private:
-        string major;
-        int gradYear;
-
-    public:
-        Student(int id, string name0, string mjr, int gy);
-        int getGY() const { return gradYear; }
-        string getMajor() const {return major;}
-};
-
-Student::Student(int id, string name0, string mjr, int gy) :
-    Person(id, name0),
-    major(mjr),
-    gradYear(gy) {}
-
-// Prototypes
-
-void display(const Student&);
-
-
-int main(void) {
-    Student santosh(101, "Santosh", "CSE", 2023);
-    Student* sushanth = new Student(102, "Sushanth", "CSE", 2023);
-    display(*sushanth);
-    display(santosh);
-    return 0;
+void Progression::printProgression(int n)
+{
+    cout << firstValue();
+    for(int i = 2; i <= n; i++)
+        cout << ' ' << nextValue();
+    cout << endl;
 }
 
-void display(const Student& s) {
-    cout << s.getID() << endl;
-    cout << s.getname()<< endl;
-    cout << s.getMajor() << endl;
-    cout << s.getGY() << endl;
+long Progression::firstValue()
+{
+    cur = first;
+    return cur;
+}
+
+long Progression::nextValue()
+{
+    return ++cur;
+}
+
+class ArithProgression : public Progression {
+    public:
+        ArithProgression(long i = 1);
+    protected:
+        virtual long nextValue();
+    protected:
+        long inc;
+};
+
+ArithProgression::ArithProgression(long i) : Progression(), inc(i)
+{
+
+}
+
+long ArithProgression::nextValue()
+{
+    cur += inc;
+    return cur;
+}
+
+class GeomProgression : public Progression {
+    public:
+        GeomProgression(long b = 2);
+    protected:
+        virtual long nextValue();
+    protected:
+        long base;
+};
+
+GeomProgression::GeomProgression(long b) : Progression(1), base(b)
+{
+
+}
+
+long GeomProgression::nextValue()
+{
+    cur *= base;
+    return cur;
+}
+
+class FibonacciProgression : public Progression {
+    public:
+        FibonacciProgression(long f = 0, long s = 1);
+    protected:
+        virtual long firstValue();
+        virtual long nextValue();
+    protected:
+        long second;
+        long prev;
+};
+
+FibonacciProgression::FibonacciProgression(long f, long s) : Progression(f), second(s), prev(second - first)
+{
+
+}
+
+long FibonacciProgression::firstValue()
+{
+    cur = first;
+    prev = second - first;
+    return cur;
+}
+
+long FibonacciProgression::nextValue()
+{
+    long temp = prev;
+    prev = cur;
+    cur += temp;
+    return cur;
+}
+
+int main()
+{
+    Progression *prog;
+    
+    cout << "Arithmetic progression with default increment:\n" ;
+    prog = new ArithProgression();
+    prog->printProgression(10);
+    cout << "Arithmetic progression with increment 5:\n" ;
+    prog = new ArithProgression(5);
+    prog->printProgression(10);
+
+    cout << "Geometic progression with default increment:\n" ;
+    prog = new GeomProgression();
+    prog->printProgression(10);
+    cout << "Geometic progression with base 3:\n" ;
+    prog = new GeomProgression(3);
+    prog->printProgression(10);
+
+    cout << "Fibonacci progression with default start values:\n" ;
+    prog = new FibonacciProgression();
+    prog->printProgression(10);
+    cout << "Fibonacci progression with start 4 and 6:\n" ;
+    prog = new FibonacciProgression(4, 6);
+    prog->printProgression(10);
+
+    return EXIT_SUCCESS;
 }
