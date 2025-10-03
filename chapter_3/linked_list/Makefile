@@ -1,16 +1,22 @@
-CC=g++-11
+# 定義編譯器
+CXX = g++
 
-flags= -g -Wall
+# 編譯選項
+CXXFLAGS = -Wall -std=c++11
 
-Target=string_list
+# 定義源文件和目標檔案
+SRC = string_list.cpp StringLinkedList.cpp
+OBJ = $(SRC:.cpp=.o)
+TARGET = test
 
-Target: string_list.o StringLinkedList.o
-	$(CC) $(flags) string_list.o StringLinkedList.o -o string_list
+# 編譯規則
+$(TARGET): $(OBJ)
+	$(CXX) $(OBJ) -o $(TARGET)
 
+# 將 .cpp 轉換為 .o
+%.o: %.cpp
+	$(CXX) -c $(CXXFLAGS) $< -o $@
 
-string_list.o: string_list.cpp
-	$(CC) -c string_list.cpp
-
-
-StringLinkedList.o: StringLinkedList.h StringLinkedList.cpp
-	$(CC) -c StringLinkedList.cpp
+# 清理生成的檔案
+clean:
+	rm -f $(OBJ) $(TARGET)

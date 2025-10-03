@@ -10,7 +10,6 @@ int main(void) {
     root.addFront("Arshad");
     root.addFront("Asifa");
     root.addFront("Afrid");
-
     root.printList();
     return 0;
 }

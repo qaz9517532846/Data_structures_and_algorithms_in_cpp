@@ -74,7 +74,6 @@ void DLinkedList::printList() const {
         cout << temp -> ele << endl;
         temp = temp -> right;
     }
-    return;
 }
 
 void DLinkedList::rprintList() const {

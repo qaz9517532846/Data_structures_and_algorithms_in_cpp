@@ -1,15 +1,22 @@
-CC=g++-11
+# 定義編譯器
+CXX = g++
 
-flags= -g -Wall
+# 編譯選項
+CXXFLAGS = -Wall -std=c++11
 
-Target=DLinkedListTest
+# 定義源文件和目標檔案
+SRC = DLinkedListTest.cpp DLinkedList.cpp
+OBJ = $(SRC:.cpp=.o)
+TARGET = test
 
-$(Target): DLinkedList.o DLinkedListTest.o
-	$(CC) $(flags) DLinkedList.o DLinkedListTest.o -o DLinkedListTest
+# 編譯規則
+$(TARGET): $(OBJ)
+	$(CXX) $(OBJ) -o $(TARGET)
 
+# 將 .cpp 轉換為 .o
+%.o: %.cpp
+	$(CXX) -c $(CXXFLAGS) $< -o $@
 
-DLinkedList.o : DLinkedList.h DLinkedList.cpp
-	$(CC) -c DLinkedList.cpp
-
-DLinkedListTest.o : DLinkedList.h DLinkedListTest.cpp
-	$(CC) -c DLinkedListTest.cpp
+# 清理生成的檔案
+clean:
+	rm -f $(OBJ) $(TARGET)
