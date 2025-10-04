@@ -3,6 +3,21 @@
 
 using namespace std;
 
+void listReverse(DLinkedList& L) {
+    DLinkedList T;
+    while(!L.empty()) {
+        string s = L.front();
+        L.removeFront();
+        T.addFront(s);
+    }
+
+    while(!T.empty()) {
+        string s = T.front();
+        T.removeFront();
+        L.addBack(s);
+    }
+}
+
 int main(void) {
     // Initialize a DLinkedList object
     DLinkedList list;
@@ -13,6 +28,8 @@ int main(void) {
     //Add Elements at front and back
     list.addFront("Afrid Hussain");
     list.addBack("Bhavana");
+
+    //listReverse(list);
 
     // Print Front and back elements in the list
     cout << list.front() << endl;

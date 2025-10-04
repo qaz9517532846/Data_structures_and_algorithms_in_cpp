@@ -41,8 +41,7 @@ void StringLinkedList::printList() const {
     if (head == NULL)
         cout << "List is empty!" << endl;
     else {
-        StringNode* temp = new StringNode;
-        temp = head;
+        StringNode* temp = head;
         while(temp != NULL) {
             cout << temp -> ele << "\n";
             temp = temp -> next;

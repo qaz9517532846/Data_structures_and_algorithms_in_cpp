@@ -7,8 +7,8 @@ using namespace std;
 DLinkedList::DLinkedList() {
     header = new DNode;
     trailer = new DNode;
-    header -> right = trailer;
-    trailer -> left = header;
+    header->next = trailer;
+    trailer->prev = header;
 }
 
 DLinkedList::~DLinkedList() {
@@ -19,73 +19,71 @@ DLinkedList::~DLinkedList() {
 
 
 bool DLinkedList::empty() const {
-    return (header -> right == trailer) && (trailer -> left == header);
+    return header->next == trailer;
 }
 
-const Ele& DLinkedList::front() const {
-    return header -> right -> ele;
+const Elem& DLinkedList::front() const {
+    return header->next->elem;
 }
 
-const Ele& DLinkedList::back() const {
-    return trailer -> left -> ele;
+const Elem& DLinkedList::back() const {
+    return trailer->prev->elem;
 }
 
-void DLinkedList::add(DNode* v, const Ele& e) {
+void DLinkedList::add(DNode* v, const Elem& e) {
     DNode* u = new DNode;
-    u -> ele = e;
-    u -> right = v;
-    u -> left = v -> left;
-    v -> left -> right = u;
-    v -> left = u;
+    u->elem = e;
+    u->next = v;
+    u->prev = v->prev;
+    v->prev->next = u;
+    v->prev = u;
 }
 
-void DLinkedList::addFront(const Ele& e) {
-    add(header -> right, e);
+void DLinkedList::addFront(const Elem& e) {
+    add(header->next, e);
 }
 
-void DLinkedList::addBack(const Ele& e) {
+void DLinkedList::addBack(const Elem& e) {
     add(trailer, e);
 }
 
 void DLinkedList::remove(DNode* v) {
-    DNode* u = v -> left;
-    DNode* w = v -> right;
-    u -> right = w;
-    w -> left = u;
+    DNode* u = v->prev;
+    DNode* w = v->next;
+    u->next = w;
+    w->prev = u;
     delete v;
 }
 
 void DLinkedList::removeFront() {
-    remove(header -> right);
+    remove(header->next);
 }
 
 void DLinkedList::removeBack() {
-    remove(trailer -> left);
+    remove(trailer->prev);
 }
 
 void DLinkedList::printList() const {
-    DNode* temp = new DNode;
-    temp = header -> right;
+    DNode* temp = header->next;
     if (temp == NULL) {
         cout << "List is empty" << endl;
     }
 
-    while(temp != NULL) {
-        cout << temp -> ele << endl;
-        temp = temp -> right;
+    while(temp != trailer) {
+        cout << temp->elem << endl;
+        temp = temp->next;
     }
 }
 
 void DLinkedList::rprintList() const {
-    DNode* temp = new DNode;
-    temp = trailer;
+    DNode* temp = trailer->prev;
 
     if (temp == NULL) {
         cout << "List is empty" << endl;
     }
 
-    while(temp != NULL) {
-        cout << temp -> ele << endl;
-        temp = temp -> left;
+    while(temp != header) {
+        cout << temp->elem << endl;
+        temp = temp->prev;
     }
 }
