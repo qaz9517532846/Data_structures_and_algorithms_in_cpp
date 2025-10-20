@@ -4,32 +4,38 @@
 
 using namespace std;
 
-ArrayStack::ArrayStack(int stackSize = DEFAULT_CAPACITY) {
+template <typename E> 
+ArrayStack<E>::ArrayStack(int stackSize) {
     stack = new E[stackSize];
     TOTAL_CAPACITY = stackSize;
     CURRENT_CAPACITY = 0;
     t = -1;
 }
 
-ArrayStack::~ArrayStack() {
+template <typename E> 
+ArrayStack<E>::~ArrayStack() {
     delete[] stack;
 }
 
-int ArrayStack::size() const {
-    return CURRENT_CAPACITY;
+template <typename E> 
+int ArrayStack<E>::size() const {
+    return t + 1;
 }
 
-bool ArrayStack::empty() const {
-    return CURRENT_CAPACITY == 0;
+template <typename E> 
+bool ArrayStack<E>::empty() const {
+    return t < 0;
 }
 
-const E& ArrayStack::top() const {
+template <typename E> 
+const E& ArrayStack<E>::top() const {
     if( empty() )
         throw(StackEmpty("Stack is empty!"));
     return stack[t];
 }
 
-void ArrayStack::push(const E& ele) {
+template <typename E> 
+void ArrayStack<E>::push(const E& ele) {
     if(CURRENT_CAPACITY == TOTAL_CAPACITY)
         throw(StackEmpty("Stack is Full!"));
     else {
@@ -40,7 +46,8 @@ void ArrayStack::push(const E& ele) {
     return;
 }
 
-void ArrayStack::pop() {
+template <typename E> 
+void ArrayStack<E>::pop() {
     if (empty())
         throw (StackEmpty("Stack is Empty!"));
 
@@ -48,6 +55,5 @@ void ArrayStack::pop() {
     --CURRENT_CAPACITY;
 }
 
-
-
-
+template class ArrayStack<int>;
+template class ArrayStack<std::string>; // or std::__cxx11::basic_string<...>

@@ -45,7 +45,8 @@
     "list": "cpp",
     "unordered_map": "cpp",
     "unordered_set": "cpp",
-    "forward_list": "cpp"
+    "forward_list": "cpp",
+    "valarray": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

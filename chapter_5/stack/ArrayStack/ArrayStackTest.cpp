@@ -5,56 +5,17 @@ using namespace std;
 
 
 int main(void) {
-    ArrayStack afrid(10);
-    cout << afrid.empty() << endl;
-    cout << afrid.size() << endl;
-    afrid.push(10);
-    cout << afrid.top() << endl;
-    afrid.push(11);
-    cout << afrid.top() << endl;
-    afrid.push(12);
-    cout << afrid.top() << endl;
-    afrid.push(13);
-    cout << afrid.top() << endl;
-    afrid.push(14);
-    cout << afrid.top() << endl;
-    afrid.push(15);
-    cout << afrid.top() << endl;
-    afrid.push(16);
-    cout << afrid.top() << endl;
-    afrid.push(17);
-    cout << afrid.top() << endl;
-    afrid.push(18);
-    cout << afrid.top() << endl;
-    try {
-        afrid.push(19);
-    }catch(StackEmpty& e) {
-        cout << "Entered here! 1" << endl;
-        cerr << e.getMessage() << endl;
-    }
-    cout << afrid.top() << endl;
-    try {
-        afrid.push(20);
-    }catch(StackEmpty& e) {
-        cout << "Entered here! 2" << endl;
-        cerr << e.getMessage() << endl;
-    }
-    cout << afrid.size() << endl;
-
-    if (afrid.size() == 10) {
-        cout << "Popping an element to make room for an element :) " << endl;
-        cout << "The element being popped is: " << afrid.top() << endl;
-        afrid.pop();
-    }
-
-    cout << afrid.size() << endl;
-
-    cout << "Now, the top element is: ";
-
-    try {
-        cout << afrid.top() << endl;
-    } catch(StackEmpty& e) {
-        cout << "Stack is Empty" << endl;
-    }
+    ArrayStack<int> A;              //A=[], size=0
+    A.push(7);                      //A=[7*], size=1
+    A.push(13);                     //A=[7, 13*], size=2
+    cout<<A.top()<<endl;A.pop();    //A=[7*], outputs: 13
+    A.push(9);                      //A=[7, 9*], size=2
+    cout<<A.top()<<endl;            //A=[7, 9*], outputs: 9
+    cout<<A.top()<<endl;A.pop();    //A=[7*], outputs: 9
+    ArrayStack<string>B(10);        //B=[], size=0
+    B.push("Bob");                  //B=[Bob*], size=1
+    B.push("Alice");                //B=[Bob,Alice*], size=2
+    cout<<B.top()<<endl;B.pop();    //B=[Bob*], outputs:Alice
+    B.push("Eve");                  //B=[Bob,Eve*], size=2
     return 0;
 }

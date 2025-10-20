@@ -1,18 +1,22 @@
-CC=g++-11
+# 定義編譯器
+CXX = g++
 
-flags= -g -Wall
+# 編譯選項
+CXXFLAGS = -Wall -std=c++11
 
-all: ArrayStackTest.o ArrayStack.o ArrayStack
+# 定義源文件和目標檔案
+SRC = ArrayStack.cpp ArrayStackTest.cpp
+OBJ = $(SRC:.cpp=.o)
+TARGET = test
 
-ArrayStackTest.o: ArrayStackTest.cpp
-	$(CC) -c ArrayStackTest.cpp
+# 編譯規則
+$(TARGET): $(OBJ)
+	$(CXX) $(OBJ) -o $(TARGET)
 
+# 將 .cpp 轉換為 .o
+%.o: %.cpp
+	$(CXX) -c $(CXXFLAGS) $< -o $@
 
-ArrayStack.o: ArrayStack.h ArrayStack.cpp
-	$(CC) -c ArrayStack.cpp
-
-ArrayStack: ArrayStackTest.o ArrayStack.o
-	$(CC) $(flags) ArrayStackTest.o ArrayStack.o -o ArrayStack
-
+# 清理生成的檔案
 clean:
-	rm *.o
+	rm -f $(OBJ) $(TARGET)

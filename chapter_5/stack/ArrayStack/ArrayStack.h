@@ -3,17 +3,16 @@
 
 #include "../stackEmptyException.h"
 
-enum {DEFAULT_CAPACITY = 100};
-
-typedef int E;
+template <typename E>
 class ArrayStack {
+    enum {DEFAULT_CAPACITY = 100};
     public:
         int size() const;
         bool empty() const;
         const E& top() const;
         void push(const E& ele);
         void pop();
-        ArrayStack(int stackSize);
+        ArrayStack(int stackSize = DEFAULT_CAPACITY);
         ~ArrayStack();
 
     private:
@@ -22,8 +21,5 @@ class ArrayStack {
         E* stack;
         int t;
 };
-
-
-
 
 #endif
