@@ -1,21 +1,39 @@
 #include <iostream>
+#include <vector>
 #include "ArrayStack.h"
 
 using namespace std;
 
+template<typename E>
+void reverse(vector<E>& V)
+{
+    ArrayStack<E> S(V.size());
+    for(int i = 0 ; i < V.size() ; ++i)
+        S.push(V[i]);
+    
+    for(int i = 0 ; i < V.size() ; ++i)
+    {
+        V[i] = S.top();
+        S.pop();
+    }
+}
 
 int main(void) {
-    ArrayStack<int> A;              //A=[], size=0
-    A.push(7);                      //A=[7*], size=1
-    A.push(13);                     //A=[7, 13*], size=2
-    cout<<A.top()<<endl;A.pop();    //A=[7*], outputs: 13
-    A.push(9);                      //A=[7, 9*], size=2
-    cout<<A.top()<<endl;            //A=[7, 9*], outputs: 9
-    cout<<A.top()<<endl;A.pop();    //A=[7*], outputs: 9
-    ArrayStack<string>B(10);        //B=[], size=0
-    B.push("Bob");                  //B=[Bob*], size=1
-    B.push("Alice");                //B=[Bob,Alice*], size=2
-    cout<<B.top()<<endl;B.pop();    //B=[Bob*], outputs:Alice
-    B.push("Eve");                  //B=[Bob,Eve*], size=2
+    ArrayStack<int> A;
+    A.push(7);
+    A.push(13);
+    cout << A.top() << endl;
+    A.pop();
+    A.push(9);
+    cout << A.top() << endl;
+    cout << A.top() << endl;
+    A.pop();
+
+    ArrayStack<string> B(10);
+    B.push("Bob");
+    B.push("Alice");
+    cout << B.top() << endl;
+    B.pop();
+    B.push("Eve");
     return 0;
 }
