@@ -5,7 +5,7 @@ CXX = g++
 CXXFLAGS = -Wall -std=c++11
 
 # 定義源文件和目標檔案
-SRC = LinkedStack.cpp
+SRC = LinkedStack.cpp MatchingTags.cpp
 OBJ = $(SRC:.cpp=.o)
 TARGET = test
 
