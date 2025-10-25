@@ -3,23 +3,23 @@
 
 #include "../VectorException.h"
 
-template <class E>
+typedef int Elem;
 class ArrayVector {
     public:
         ArrayVector();
         int size() const;
         bool empty() const;
-        E& operator[](int i);
-        E& at(int i);
+        Elem& operator[](int i);
+        Elem& at(int i) throw(IndexOutOfBounds);
         void erase(int i);
-        //void insert(int i, const E& ele);
-        //void reserve(int i);
+        void insert(int i, const Elem& ele);
+        void reserve(int N);
 
 
     private:
         int capacity;
         int n;
-        E* A;
+        Elem* A;
 
 };
 
