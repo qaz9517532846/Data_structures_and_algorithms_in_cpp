@@ -48,7 +48,8 @@
     "forward_list": "cpp",
     "valarray": "cpp",
     "array": "cpp",
-    "regex": "cpp"
+    "regex": "cpp",
+    "random": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

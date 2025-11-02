@@ -105,6 +105,60 @@ void NodeList::eraseBack()
     erase(--end());
 }
 
+NodeSequence::Iterator NodeSequence::atIndex(int i) const
+{
+    Iterator p = begin();
+    for (int j = 0; j < i; j++) {
+        ++p;
+    }
+    return p;
+}
+
+int NodeSequence::indexOf(const Iterator& p) const
+{
+    Iterator q = begin();
+    int j = 0;
+    while (q != p) {
+        ++q;
+        ++j;
+    }
+    return j;
+}
+
+void bubbleSort1(NodeSequence& S)
+{
+    int n = S.size();
+    for (int i = 0; i < n; i++) {
+        for(int j = 1; j < n - i; j++) {
+            NodeSequence::Iterator prec = S.atIndex(j - 1);
+            NodeSequence::Iterator succ = S.atIndex(j);
+            if (*prec > *succ) {
+                Elem temp = *prec;
+                *prec = *succ;
+                *succ = temp;
+            }
+        }
+    }
+}
+
+void bubbleSort2(NodeSequence& S)
+{
+    int n = S.size();
+    for (int i = 0; i < n; i++) {
+        NodeSequence::Iterator prec = S.begin();
+        for(int j = 1; j < n - i; j++) {
+            NodeSequence::Iterator succ = prec;
+            ++succ;
+            if (*prec > *succ) {
+                Elem temp = *prec;
+                *prec = *succ;
+                *succ = temp;
+            }
+            ++prec;
+        }
+    }
+}
+
 int main()
 {
     NodeList nl;

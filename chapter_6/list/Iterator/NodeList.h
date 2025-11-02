@@ -43,3 +43,9 @@ class NodeList {
         Node* trailer;
         int n;
 };
+
+class NodeSequence : public NodeList {
+    public:
+        Iterator atIndex(int i) const;
+        int indexOf(const Iterator& p) const;
+};
