@@ -87,10 +87,10 @@ class EvaluateExpressionTour : public EulerTour
         void visitExternal(const Position& p, Result& r) const
         { r.finalResult = *p.parent(); }
 
-        void visitLeft(Position& p, Result& r) const
+        void visitLeft(const Position& p, Result& r) const
         { r.leftResult = *p.left(); } 
 
-        void visitRight(Position& p, Result& r) const
+        void visitRight(const Position& p, Result& r) const
         { r.rightResult = *p.right(); }
 };
 
