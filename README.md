@@ -37,7 +37,7 @@ chapter_5
 | 4 | <ul> <li> - [x] Analysis Tools </li> </ul>|
 | 5 | <ul> <li> - [x] Stacks, Queues, and Deques </li> </ul>|
 | 6 | <ul> <li> - [x] List and Iterator ADTs </li> </ul>|
-| 7 | <ul> <li> - [ ] Trees * </li> </ul>|
+| 7 | <ul> <li> - [x] Trees * </li> </ul>|
 | 8 | <ul> <li> - [ ] Heaps and Priority Queues </li> </ul>|
 | 9 | <ul> <li> - [ ] Hash Tables, Maps, and Skip Lists </li> </ul>|
 | 10 | <ul> <li> - [ ] Search Trees </li> </ul>|
