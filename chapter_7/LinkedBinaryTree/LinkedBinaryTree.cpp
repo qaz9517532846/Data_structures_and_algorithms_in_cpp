@@ -62,6 +62,22 @@ void LinkedBinaryTree::preorder(Node* v, PositionList& pl) const {
     if (v->right != NULL) preorder(v->right, pl);
 }
 
+int EulerTour::eulerTour(const Position& p) const {
+    Result r = initResult();
+
+    if (p.isExternal()) {
+        visitExternal(p, r);
+    }
+    else {
+        visitLeft(p, r);
+        r.leftResult = eulerTour(p.left()); //recurseon left
+        visitBelow(p, r);
+        r.rightResult = eulerTour(p.right()); //recurseonright
+        visitRight(p, r);
+    }
+    return result(r);
+}
+
 int main() {
     LinkedBinaryTree tree;
     tree.addRoot();
@@ -80,22 +96,8 @@ int main() {
     *leftLeftChild = 4; // Set left-left child element
     *leftRightChild = 5; // Set left-right child element
 
-    // Print all positions in preorder
-    LinkedBinaryTree::PositionList positions = tree.positions();
-    for (auto& pos : positions) {
-        cout << *pos << " ";
-    }
-    cout << endl;
-
-    // Remove above external node
-    tree.removeAboveExternal(leftLeftChild);
-
-    // Print all positions after removal
-    positions = tree.positions();
-    for (auto& pos : positions) {
-        cout << *pos << " ";
-    }
-    cout << endl;
+    PrintExpressionTour evalTour;
+    evalTour.execute(tree);
 
     return 0;
 }
