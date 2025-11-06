@@ -2,22 +2,9 @@
 #include <vector>
 #include <list>
 #include "../Point2D.h"
+#include "../Comparators.h"
 
 using namespace std;
-
-class LeftRight {
-    public:
-        bool operator()(const Point2D& p, const Point2D& q) const {
-            return p.getX() < q.getX();
-        }
-};
-
-class BottomTop {
-    public:
-        bool operator()(const Point2D& p, const Point2D& q) const {
-            return p.getY() < q.getY();
-        }
-};
 
 template<typename E, typename C>
 class ListPriorityQueue {
@@ -47,14 +34,14 @@ void ListPriorityQueue<E, C>::insert(const E& e) {
     typename std::list<E>::iterator p;
     p = L.begin();
     while(p != L.end() && !isLess(e, *p)) ++p; //find larger element
-    L.insert(p, e); // insert ebeforep
+    L.insert(p, e); // insert e before p
 }
 
 template<typename E, typename C> //minimum element
 const E& ListPriorityQueue<E, C>::min() const
 {
     return L.front();
-} //minimumisat the front
+} //minimum is at the front
 
 template<typename E, typename C> //remove minimum
 void ListPriorityQueue<E, C>::removeMin()

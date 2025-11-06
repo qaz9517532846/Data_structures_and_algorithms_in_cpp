@@ -1,22 +1,9 @@
 #include <iostream>
 #include <vector>
 #include "../Point2D.h"
+#include "../Comparators.h"
 
 using namespace std;
-
-class LeftRight {
-    public:
-        bool operator()(const Point2D& p, const Point2D& q) const {
-            return p.getX() < q.getX();
-        }
-};
-
-class BottomTop {
-    public:
-        bool operator()(const Point2D& p, const Point2D& q) const {
-            return p.getY() < q.getY();
-        }
-};
 
 template <typename E, typename C>
 void printSmaller(const E& p, const E& q, const C& isLess) {
