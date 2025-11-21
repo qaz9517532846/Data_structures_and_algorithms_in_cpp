@@ -6,6 +6,7 @@ using namespace std;
 
 template<typename E>
 class BinaryTree {
+    template<typename> friend class AVLTree;  // 加入這行
     protected:
         struct Node {
             E elt;

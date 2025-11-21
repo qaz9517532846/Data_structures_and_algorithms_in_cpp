@@ -1,5 +1,5 @@
+#include "NonexistentElement.h"
 #include "BinaryTree.h"
-#include "../NonexistentElement.h"
 
 template<typename E>
 class SearchTree {
@@ -23,7 +23,7 @@ class SearchTree {
         TPos root() const;
         TPos finder(const K& k, const TPos& v) const;
         TPos inserter(const K& k, const V& x);
-        TPos eraser(const TPos& v);
+        TPos eraser(TPos v);
     protected:
         BinaryTree T;
         int n;

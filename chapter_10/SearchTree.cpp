@@ -89,7 +89,7 @@ typename SearchTree<E>::Iterator SearchTree<E>::insert(const K& k, const V& x) {
 }
 
 template<typename E>
-typename SearchTree<E>::TPos SearchTree<E>::eraser(const TPos& v) {
+typename SearchTree<E>::TPos SearchTree<E>::eraser(TPos v) {
     typename SearchTree<E>::TPos w;
     if (v.left().isExternal()) w = v.left();
     else if (v.right().isExternal()) w = v.right();
@@ -115,34 +115,5 @@ void SearchTree<E>::erase(const K& k) throw(NonexistentElement) {
     eraser(v);
 }
 
-int main() {
-    SearchTree<Entry<int, std::string>> st;
-    st.insert(5, "five");
-    st.insert(3, "three");
-    st.insert(7, "seven");
-
-        // --- debugging prints ---
-    std::cout << "Search size: " << st.size() << std::endl;
-    auto b = st.begin();
-    auto e = st.end();
-    std::cout << "begin() == end()? " << (b == e ? "yes" : "no") << std::endl;
-    if (b != e) {
-        std::cout << "Iterating contents:" << std::endl;
-        for (auto it = b; it != e; ++it) {
-            std::cout << "Key: " << (*it).key() << ", Value: " << (*it).value() << std::endl;
-        }
-    } else {
-        std::cout << "Iterator is empty (begin==end). Insertion may have failed or iterator logic is wrong." << std::endl;
-    }
-
-    auto itf = st.find(3);
-    if (itf != st.end()) {
-        std::cout << "find(3) -> key=" << (*itf).key() << " value=" << (*itf).value() << std::endl;
-    } else {
-        std::cout << "key 3 not found\n";
-    }
-
-    std::cout << "Finished." << std::endl;
-    
-    return EXIT_SUCCESS;
-}
+template class SearchTree<Entry<int, std::string>>;
+template class SearchTree<AVLEntry<Entry<int, std::string>>>;  // 加入這行

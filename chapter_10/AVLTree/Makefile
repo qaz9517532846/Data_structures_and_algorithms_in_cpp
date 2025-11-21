@@ -5,7 +5,7 @@ CXX = g++
 CXXFLAGS = -Wall -std=c++11
 
 # 定義源文件和目標檔案
-SRC = ../BinaryTree.cpp ../SearchTree.cpp BinarySearchTree.cpp
+SRC = AVLTree.cpp ../BinaryTree.cpp ../SearchTree.cpp
 OBJ = $(SRC:.cpp=.o)
 TARGET = test
 
