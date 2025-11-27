@@ -30,3 +30,25 @@ class AVLEntry : public BaseE {
             : BaseE(k, v), ht(0) { }
         template<typename> friend class AVLTree;
 };
+
+// 顏色枚舉
+enum Color { RED, BLACK };
+
+// RBEntry 類別定義
+template<typename E>
+class RBEntry : public E {
+private:
+    Color col;
+protected:
+    typedef typename E::Key K;
+    typedef typename E::Value V;
+public:
+    RBEntry(const K& k = K(), const V& v = V()) : E(k, v), col(RED) { }
+    
+    Color color() const { return col; }
+    bool isRed() const { return col == RED; }
+    bool isBlack() const { return col == BLACK; }
+    void setColor(Color c) { col = c; }
+    
+    template<typename> friend class RBTree;
+};

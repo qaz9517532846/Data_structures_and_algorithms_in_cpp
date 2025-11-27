@@ -73,3 +73,4 @@ void BinaryTree<E>::preorder(typename BinaryTree<E>::Node* v, typename BinaryTre
 
 template class BinaryTree<Entry<int, std::string>>;
 template class BinaryTree<AVLEntry<Entry<int, std::string>>>;
+template class BinaryTree<RBEntry<Entry<int, std::string>>>;

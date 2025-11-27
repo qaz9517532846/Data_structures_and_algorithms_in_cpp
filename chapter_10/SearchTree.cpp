@@ -116,4 +116,5 @@ void SearchTree<E>::erase(const K& k) throw(NonexistentElement) {
 }
 
 template class SearchTree<Entry<int, std::string>>;
-template class SearchTree<AVLEntry<Entry<int, std::string>>>;  // 加入這行
+template class SearchTree<AVLEntry<Entry<int, std::string>>>;
+template class SearchTree<RBEntry<Entry<int, std::string>>>;

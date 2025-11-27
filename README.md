@@ -40,7 +40,7 @@ chapter_5
 | 7 | <ul> <li> - [x] Trees * </li> </ul>|
 | 8 | <ul> <li> - [x] Heaps and Priority Queues </li> </ul>|
 | 9 | <ul> <li> - [x] Hash Tables, Maps, and Skip Lists </li> </ul>|
-| 10 | <ul> <li> - [ ] Search Trees </li> </ul>|
+| 10 | <ul> <li> - [x] Search Trees </li> </ul>|
 | 11 | <ul> <li> - [ ] Sorting, Sets, and Selection </li> </ul>|
 | 12 | <ul> <li> - [ ] Strings and Dynamic Programming </li> </ul>|
 | 13 | <ul> <li> - [ ] Graph Algorithms </li> </ul>|
