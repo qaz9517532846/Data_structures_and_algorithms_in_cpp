@@ -42,8 +42,8 @@ chapter_5
 | 9 | <ul> <li> - [x] Hash Tables, Maps, and Skip Lists </li> </ul>|
 | 10 | <ul> <li> - [x] Search Trees </li> </ul>|
 | 11 | <ul> <li> - [x] Sorting, Sets, and Selection </li> </ul>|
-| 12 | <ul> <li> - [ ] Strings and Dynamic Programming </li> </ul>|
-| 13 | <ul> <li> - [ ] Graph Algorithms </li> </ul>|
+| 12 | <ul> <li> - [x] Strings and Dynamic Programming </li> </ul>|
+| 13 | <ul> <li> - [x] Graph Algorithms </li> </ul>|
 | 14 | <ul> <li> - [ ] Memory Management and B-Trees </li> </ul>|
 
 * _(In progress)_ marked as *
